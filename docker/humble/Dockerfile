@@ -14,8 +14,8 @@ RUN apt-get update -qq && \
     python3-pip \
     mesa-utils \
     --no-install-recommends terminator \
-    ros-humble-desktop-full \
-    rm -rf /var/lib/apt/lists/*
+    ros-humble-desktop-full 
+    # rm -rf /var/lib/apt/lists/*
 
 # Init catkin_home directoy
 RUN mkdir /tam_ws
