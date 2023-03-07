@@ -1,4 +1,4 @@
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <WiFiUDP.h>
 
 #include "config.h"  // Sustituir con datos de vuestra red
