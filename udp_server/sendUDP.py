@@ -2,7 +2,7 @@ import socket
 
 UDP_IP = '192.168.1.14'
 UDP_PORT = 8888
-UDP_PAYLOAD = 'abcdef'
+#UDP_PAYLOAD = 'abcdef'
 
 def yes_or_no(question):
     reply = str(input(question)).lower().strip()
@@ -15,12 +15,13 @@ def yes_or_no(question):
       
 while True:
    try:
+      valueOfLED = input("Value of LED: ")
       sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-      sock.sendto(bytes(UDP_PAYLOAD, "utf-8"), (UDP_IP, UDP_PORT))    
+      sock.sendto(bytes(valueOfLED, "utf-8"), (UDP_IP, UDP_PORT))    
       sock.close()
       print("UDP target IP:", UDP_IP)
       print("UDP target port:", UDP_PORT)
-      print("message:", UDP_PAYLOAD)
+      print("message:", valueOfLED)
       if(yes_or_no('Send again (y/n): ')):
          break
    except:

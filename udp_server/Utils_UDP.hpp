@@ -28,7 +28,7 @@ void SendUDP_Packet(String content) {
   UDP.endPacket();
 }
 
-void GetUDP_Packet(bool sendACK = true)
+int GetUDP_Packet(bool sendACK = true)
 {
   int packetSize = UDP.parsePacket();
   if (packetSize)
@@ -48,9 +48,11 @@ void GetUDP_Packet(bool sendACK = true)
     Serial.write((uint8_t*)packetBuffer, (size_t)packetSize);
     Serial.println();
     ProcessPacket(String(packetBuffer));
+    return int(packetBuffer[0]) - '0';
 
     //// send a reply, to the IP address and port that sent us the packet we received
     if(sendACK) SendUDP_ACK();
   } 
   delay(10);
+  return -1;
 }

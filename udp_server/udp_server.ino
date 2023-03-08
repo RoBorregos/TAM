@@ -6,6 +6,8 @@
 #include "Utils.hpp"
 #include "Utils_UDP.hpp"
 
+int led_status = 3;
+
 void setup() 
 {
   pinMode(2, OUTPUT);
@@ -18,6 +20,11 @@ void setup()
 
 void loop() 
 {
-   GetUDP_Packet();
+  int value_recieved = GetUDP_Packet();
+   if(value_recieved != -1) {
+    led_status = value_recieved;
+    Serial.println(led_status);
+    digitalWrite(2, led_status);
+   }
    //SendUDP_Packet("abcde");
 }
